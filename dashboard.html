@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Personal Expense Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+    <h2>📊 Personal Expense Tracker</h2>
+    <button onclick="logout()">Logout</button>
+  </nav>
+
+  <div class="dashboard">
+    <!-- Summary Cards -->
+    <div class="summary">
+      <div class="card"><h3>Total Income</h3><p id="totalIncome">₹0</p></div>
+      <div class="card"><h3>Total Expenses</h3><p id="totalExpenses">₹0</p></div>
+      <div class="card"><h3>Savings</h3><p id="savings">₹0</p></div>
+      <div class="card"><h3>Budget Limit</h3><p id="budgetLimit">₹0</p></div>
+    </div>
+
+    <!-- Income and Expense Forms -->
+    <form id="incomeForm">
+      <h3>Add Income</h3>
+      <input type="text" id="incomeSource" placeholder="Source (e.g., Salary)" required />
+      <input type="number" id="incomeAmount" placeholder="Amount (₹)" required />
+      <button type="submit">Add Income</button>
+    </form>
+
+    <form id="expenseForm">
+      <h3>Add Expense</h3>
+      <input type="text" id="category" placeholder="Category (e.g., Food)" required />
+      <input type="number" id="amount" placeholder="Amount (₹)" required />
+      <select id="recurring">
+        <option value="no">One-Time</option>
+        <option value="yes">Recurring Monthly</option>
+      </select>
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <form id="budgetForm">
+      <h3>Set Monthly Budget</h3>
+      <input type="number" id="budgetInput" placeholder="Enter Budget (₹)" required />
+      <button type="submit">Set Budget</button>
+    </form>
+
+    <!-- Expense Table -->
+    <h3>Expense History</h3>
+    <table id="expenseTable">
+      <thead>
+        <tr><th>Category</th><th>Amount (₹)</th><th>Type</th><th>Action</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Charts -->
+    <div class="chart-section">
+      <canvas id="expenseChart"></canvas>
+      <canvas id="trendChart"></canvas>
+    </div>
+
+    <button id="exportBtn">💾 Export to CSV</button>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
